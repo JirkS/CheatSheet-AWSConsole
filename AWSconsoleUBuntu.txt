@@ -1,0 +1,383 @@
+Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.19.0-1025-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon Oct  2 05:47:19 UTC 2023
+
+  System load:  0.0               Processes:             101
+  Usage of /:   27.1% of 7.57GB   Users logged in:       0
+  Memory usage: 24%               IPv4 address for ens5: 172.31.21.212
+  Swap usage:   0%
+
+ * Ubuntu Pro delivers the most comprehensive open source security and
+   compliance features.
+
+   https://ubuntu.com/aws/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+131 updates can be applied immediately.
+71 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-21-212:~$ sudo -s
+root@ip-172-31-21-212:/home/ubuntu# nginx=stable
+root@ip-172-31-21-212:/home/ubuntu# add-apt-repository ppa:nginx/$nginx
+Repository: 'deb https://ppa.launchpadcontent.net/nginx/stable/ubuntu/ jammy main'
+Description:
+This PPA contains the latest Stable Release version of the nginx web server software.
+
+**Only Non-End-of-Life Ubuntu Releases are supported in this PPA**
+
+**Development releases of Ubuntu are not officially supported by this PPA, and uploads for those will not be available until actual final releases for those versions**
+More info: https://launchpad.net/~nginx/+archive/ubuntu/stable
+Adding repository.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Adding deb entry to /etc/apt/sources.list.d/nginx-ubuntu-stable-jammy.list
+Adding disabled deb-src entry to /etc/apt/sources.list.d/nginx-ubuntu-stable-jammy.list
+Adding key to /etc/apt/trusted.gpg.d/nginx-ubuntu-stable.gpg with fingerprint 8B3981E7A6852F782CC4951600A6F0A3C300EE8C
+Hit:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Get:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]          
+Get:3 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]        
+Get:4 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]                       
+Ign:5 https://ppa.launchpadcontent.net/nginx/stable/ubuntu jammy InRelease                      
+Err:6 https://ppa.launchpadcontent.net/nginx/stable/ubuntu jammy Release
+  404  Not Found [IP: 185.125.190.52 443]
+Get:7 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1014 kB]
+                                  
+Reading package lists... Done
+E: The repository 'https://ppa.launchpadcontent.net/nginx/stable/ubuntu jammy Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+root@ip-172-31-21-212:/home/ubuntu# 
+root@ip-172-31-21-212:/home/ubuntu# apt update
+Hit:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease                                  
+Hit:3 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease                                
+Ign:4 https://ppa.launchpadcontent.net/nginx/stable/ubuntu jammy InRelease                                     
+Hit:5 http://security.ubuntu.com/ubuntu jammy-security InRelease                                               
+Err:6 https://ppa.launchpadcontent.net/nginx/stable/ubuntu jammy Release
+  404  Not Found [IP: 185.125.190.52 443]
+Reading package lists... Done                              
+E: The repository 'https://ppa.launchpadcontent.net/nginx/stable/ubuntu jammy Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+root@ip-172-31-21-212:/home/ubuntu# apt install nginx
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  fontconfig-config fonts-dejavu-core libdeflate0 libfontconfig1 libgd3 libjbig0 libjpeg-turbo8 libjpeg8 libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail
+  libnginx-mod-stream libnginx-mod-stream-geoip2 libtiff5 libwebp7 libxpm4 nginx-common nginx-core
+Suggested packages:
+  libgd-tools fcgiwrap nginx-doc ssl-cert
+The following NEW packages will be installed:
+  fontconfig-config fonts-dejavu-core libdeflate0 libfontconfig1 libgd3 libjbig0 libjpeg-turbo8 libjpeg8 libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail
+  libnginx-mod-stream libnginx-mod-stream-geoip2 libtiff5 libwebp7 libxpm4 nginx nginx-common nginx-core
+0 upgraded, 20 newly installed, 0 to remove and 129 not upgraded.
+Need to get 2691 kB of archives.
+After this operation, 8339 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fonts-dejavu-core all 2.37-2build1 [1041 kB]
+Get:2 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 fontconfig-config all 2.13.1-4.2ubuntu5 [29.1 kB]
+Get:3 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libdeflate0 amd64 1.10-2 [70.9 kB]
+Get:4 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libfontconfig1 amd64 2.13.1-4.2ubuntu5 [131 kB]
+Get:5 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjpeg-turbo8 amd64 2.1.2-0ubuntu1 [134 kB]
+Get:6 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libjpeg8 amd64 8c-2ubuntu10 [2264 B]
+Get:7 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libjbig0 amd64 2.1-3.1ubuntu0.22.04.1 [29.2 kB]
+Get:8 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libwebp7 amd64 1.2.2-2ubuntu0.22.04.2 [206 kB]
+Get:9 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtiff5 amd64 4.3.0-6ubuntu0.5 [184 kB]
+Get:10 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxpm4 amd64 1:3.5.12-1ubuntu0.22.04.1 [36.4 kB]
+Get:11 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy/main amd64 libgd3 amd64 2.3.0-2ubuntu2 [129 kB]
+Get:12 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx-common all 1.18.0-6ubuntu14.4 [40.0 kB]
+Get:13 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-http-geoip2 amd64 1.18.0-6ubuntu14.4 [11.9 kB]
+Get:14 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-http-image-filter amd64 1.18.0-6ubuntu14.4 [15.4 kB]
+Get:15 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-http-xslt-filter amd64 1.18.0-6ubuntu14.4 [13.7 kB]
+Get:16 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-mail amd64 1.18.0-6ubuntu14.4 [45.7 kB]
+Get:17 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-stream amd64 1.18.0-6ubuntu14.4 [72.9 kB]
+Get:18 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnginx-mod-stream-geoip2 amd64 1.18.0-6ubuntu14.4 [10.1 kB]
+Get:19 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx-core amd64 1.18.0-6ubuntu14.4 [484 kB]
+Get:20 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 nginx amd64 1.18.0-6ubuntu14.4 [3872 B]
+Fetched 2691 kB in 0s (37.1 MB/s)
+Preconfiguring packages ...
+Selecting previously unselected package fonts-dejavu-core.
+(Reading database ... 64295 files and directories currently installed.)
+Preparing to unpack .../00-fonts-dejavu-core_2.37-2build1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-2build1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../01-fontconfig-config_2.13.1-4.2ubuntu5_all.deb ...
+Unpacking fontconfig-config (2.13.1-4.2ubuntu5) ...
+Selecting previously unselected package libdeflate0:amd64.
+Preparing to unpack .../02-libdeflate0_1.10-2_amd64.deb ...
+Unpacking libdeflate0:amd64 (1.10-2) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../03-libfontconfig1_2.13.1-4.2ubuntu5_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.13.1-4.2ubuntu5) ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+Preparing to unpack .../04-libjpeg-turbo8_2.1.2-0ubuntu1_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (2.1.2-0ubuntu1) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../05-libjpeg8_8c-2ubuntu10_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu10) ...
+Selecting previously unselected package libjbig0:amd64.
+Preparing to unpack .../06-libjbig0_2.1-3.1ubuntu0.22.04.1_amd64.deb ...
+Unpacking libjbig0:amd64 (2.1-3.1ubuntu0.22.04.1) ...
+Selecting previously unselected package libwebp7:amd64.
+Preparing to unpack .../07-libwebp7_1.2.2-2ubuntu0.22.04.2_amd64.deb ...
+Unpacking libwebp7:amd64 (1.2.2-2ubuntu0.22.04.2) ...
+Selecting previously unselected package libtiff5:amd64.
+Preparing to unpack .../08-libtiff5_4.3.0-6ubuntu0.5_amd64.deb ...
+Unpacking libtiff5:amd64 (4.3.0-6ubuntu0.5) ...
+Selecting previously unselected package libxpm4:amd64.
+Preparing to unpack .../09-libxpm4_1%3a3.5.12-1ubuntu0.22.04.1_amd64.deb ...
+Unpacking libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.1) ...
+Selecting previously unselected package libgd3:amd64.
+Preparing to unpack .../10-libgd3_2.3.0-2ubuntu2_amd64.deb ...
+Unpacking libgd3:amd64 (2.3.0-2ubuntu2) ...
+Selecting previously unselected package nginx-common.
+Preparing to unpack .../11-nginx-common_1.18.0-6ubuntu14.4_all.deb ...
+Unpacking nginx-common (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package libnginx-mod-http-geoip2.
+Preparing to unpack .../12-libnginx-mod-http-geoip2_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking libnginx-mod-http-geoip2 (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package libnginx-mod-http-image-filter.
+Preparing to unpack .../13-libnginx-mod-http-image-filter_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking libnginx-mod-http-image-filter (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package libnginx-mod-http-xslt-filter.
+Preparing to unpack .../14-libnginx-mod-http-xslt-filter_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking libnginx-mod-http-xslt-filter (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package libnginx-mod-mail.
+Preparing to unpack .../15-libnginx-mod-mail_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking libnginx-mod-mail (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package libnginx-mod-stream.
+Preparing to unpack .../16-libnginx-mod-stream_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking libnginx-mod-stream (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package libnginx-mod-stream-geoip2.
+Preparing to unpack .../17-libnginx-mod-stream-geoip2_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking libnginx-mod-stream-geoip2 (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package nginx-core.
+Preparing to unpack .../18-nginx-core_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking nginx-core (1.18.0-6ubuntu14.4) ...
+Selecting previously unselected package nginx.
+Preparing to unpack .../19-nginx_1.18.0-6ubuntu14.4_amd64.deb ...
+Unpacking nginx (1.18.0-6ubuntu14.4) ...
+Setting up libxpm4:amd64 (1:3.5.12-1ubuntu0.22.04.1) ...
+Setting up libdeflate0:amd64 (1.10-2) ...
+Setting up nginx-common (1.18.0-6ubuntu14.4) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Setting up libjbig0:amd64 (2.1-3.1ubuntu0.22.04.1) ...
+Setting up libnginx-mod-http-xslt-filter (1.18.0-6ubuntu14.4) ...
+Setting up fonts-dejavu-core (2.37-2build1) ...
+Setting up libjpeg-turbo8:amd64 (2.1.2-0ubuntu1) ...
+Setting up libwebp7:amd64 (1.2.2-2ubuntu0.22.04.2) ...
+Setting up libnginx-mod-http-geoip2 (1.18.0-6ubuntu14.4) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu10) ...
+Setting up libnginx-mod-mail (1.18.0-6ubuntu14.4) ...
+Setting up fontconfig-config (2.13.1-4.2ubuntu5) ...
+Setting up libnginx-mod-stream (1.18.0-6ubuntu14.4) ...
+Setting up libtiff5:amd64 (4.3.0-6ubuntu0.5) ...
+Setting up libfontconfig1:amd64 (2.13.1-4.2ubuntu5) ...
+Setting up libnginx-mod-stream-geoip2 (1.18.0-6ubuntu14.4) ...
+Setting up libgd3:amd64 (2.3.0-2ubuntu2) ...
+Setting up libnginx-mod-http-image-filter (1.18.0-6ubuntu14.4) ...
+Setting up nginx-core (1.18.0-6ubuntu14.4) ...
+ * Upgrading binary nginx                                                                                                                                                                                   [ OK ] 
+Setting up nginx (1.18.0-6ubuntu14.4) ...
+Processing triggers for ufw (0.36.1-4build1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
+Scanning processes...                                                                                                                                                                                              
+Scanning linux images...                                                                                                                                                                                           
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@ip-172-31-21-212:/home/ubuntu# 
+root@ip-172-31-21-212:/home/ubuntu# sudo apt-get install unzip
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 129 not upgraded.
+Need to get 174 kB of archives.
+After this operation, 385 kB of additional disk space will be used.
+Get:1 http://eu-north-1.ec2.archive.ubuntu.com/ubuntu jammy-updates/main amd64 unzip amd64 6.0-26ubuntu3.1 [174 kB]
+Fetched 174 kB in 0s (9001 kB/s)
+Selecting previously unselected package unzip.
+(Reading database ... 64537 files and directories currently installed.)
+Preparing to unpack .../unzip_6.0-26ubuntu3.1_amd64.deb ...
+Unpacking unzip (6.0-26ubuntu3.1) ...
+Setting up unzip (6.0-26ubuntu3.1) ...
+Processing triggers for man-db (2.10.2-1) ...
+Scanning processes...                                                                                                                                                                                              
+Scanning linux images...                                                                                                                                                                                           
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+root@ip-172-31-21-212:/home/ubuntu# cd /var/www/
+root@ip-172-31-21-212:/var/www# ls -all
+total 12
+drwxr-xr-x  3 root root 4096 Oct  2 05:51 .
+drwxr-xr-x 14 root root 4096 Oct  2 05:51 ..
+drwxr-xr-x  2 root root 4096 Oct  2 05:51 html
+root@ip-172-31-21-212:/var/www# cd /home/
+root@ip-172-31-21-212:/home# cd.
+Command 'cd.' not found, did you mean:
+  command 'cdo' from deb cdo (2.0.4-1)
+  command 'cdw' from deb cdw (0.8.1-2)
+  command 'cde' from deb cde (0.1+git9-g551e54d-1.2)
+  command 'cdi' from deb cdo (2.0.4-1)
+  command 'cd5' from deb cd5 (0.1-4)
+  command 'cdp' from deb irpas (0.10-9)
+  command 'cdb' from deb tinycdb (0.78build3)
+Try: apt install <deb name>
+root@ip-172-31-21-212:/home# cd ..
+root@ip-172-31-21-212:/# cd /var/www/html/
+root@ip-172-31-21-212:/var/www/html# ls -all
+total 12
+drwxr-xr-x 2 root root 4096 Oct  2 05:51 .
+drwxr-xr-x 3 root root 4096 Oct  2 05:51 ..
+-rw-r--r-- 1 root root  612 Oct  2 05:51 index.nginx-debian.html
+root@ip-172-31-21-212:/var/www/html# wget https://github.com/JirkS/HEX-Color-Guessing-game.git
+--2023-10-02 05:57:21--  https://github.com/JirkS/HEX-Color-Guessing-game.git
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/JirkS/HEX-Color-Guessing-game [following]
+--2023-10-02 05:57:21--  https://github.com/JirkS/HEX-Color-Guessing-game
+Reusing existing connection to github.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘HEX-Color-Guessing-game.git’
+
+HEX-Color-Guessing-game.git                              [ <=>                                                                                                                  ] 186.43K  --.-KB/s    in 0.1s    
+
+2023-10-02 05:57:22 (1.79 MB/s) - ‘HEX-Color-Guessing-game.git’ saved [190902]
+
+root@ip-172-31-21-212:/var/www/html# wget https://github.com/JirkS/HEX-Color-Guessing-game/archive/refs/heads/master.zip
+--2023-10-02 05:58:30--  https://github.com/JirkS/HEX-Color-Guessing-game/archive/refs/heads/master.zip
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/JirkS/HEX-Color-Guessing-game/zip/refs/heads/master [following]
+--2023-10-02 05:58:30--  https://codeload.github.com/JirkS/HEX-Color-Guessing-game/zip/refs/heads/master
+Resolving codeload.github.com (codeload.github.com)... 140.82.121.9
+Connecting to codeload.github.com (codeload.github.com)|140.82.121.9|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘master.zip’
+
+master.zip                                               [  <=>                                                                                                                 ]   2.10M  9.56MB/s    in 0.2s    
+
+2023-10-02 05:58:31 (9.56 MB/s) - ‘master.zip’ saved [2207465]
+
+root@ip-172-31-21-212:/var/www/html# sudo wget https://github.com/JirkS/HEX-Color-Guessing-game/archive/refs/heads/master.zip
+--2023-10-02 05:59:37--  https://github.com/JirkS/HEX-Color-Guessing-game/archive/refs/heads/master.zip
+Resolving github.com (github.com)... 140.82.121.3
+Connecting to github.com (github.com)|140.82.121.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://codeload.github.com/JirkS/HEX-Color-Guessing-game/zip/refs/heads/master [following]
+--2023-10-02 05:59:38--  https://codeload.github.com/JirkS/HEX-Color-Guessing-game/zip/refs/heads/master
+Resolving codeload.github.com (codeload.github.com)... 140.82.121.10
+Connecting to codeload.github.com (codeload.github.com)|140.82.121.10|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [application/zip]
+Saving to: ‘master.zip.1’
+
+master.zip.1                                             [ <=>                                                                                                                  ]   2.10M  11.0MB/s    in 0.2s    
+
+2023-10-02 05:59:38 (11.0 MB/s) - ‘master.zip.1’ saved [2207465]
+
+root@ip-172-31-21-212:/var/www/html# sudo unzip master.zip
+Archive:  master.zip
+27bdd01f907fda9571219d365510dbf6163f2f8d
+   creating: HEX-Color-Guessing-game-master/
+ extracting: HEX-Color-Guessing-game-master/README.md  
+   creating: HEX-Color-Guessing-game-master/img/
+  inflating: HEX-Color-Guessing-game-master/img/background.jpg  
+  inflating: HEX-Color-Guessing-game-master/index.html  
+  inflating: HEX-Color-Guessing-game-master/main.js  
+  inflating: HEX-Color-Guessing-game-master/style.css  
+root@ip-172-31-21-212:/var/www/html# ls -all
+total 4516
+drwxr-xr-x 3 root root    4096 Oct  2 06:00 .
+drwxr-xr-x 3 root root    4096 Oct  2 05:51 ..
+drwxr-xr-x 3 root root    4096 Jan  7  2023 HEX-Color-Guessing-game-master
+-rw-r--r-- 1 root root  190902 Oct  2 05:57 HEX-Color-Guessing-game.git
+-rw-r--r-- 1 root root     612 Oct  2 05:51 index.nginx-debian.html
+-rw-r--r-- 1 root root 2207465 Oct  2 05:58 master.zip
+-rw-r--r-- 1 root root 2207465 Oct  2 05:59 master.zip.1
+root@ip-172-31-21-212:/var/www/html# cd HEX-Color-Guessing-game-master/
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# ls -all
+total 28
+drwxr-xr-x 3 root root 4096 Jan  7  2023 .
+drwxr-xr-x 3 root root 4096 Oct  2 06:00 ..
+-rw-r--r-- 1 root root   26 Jan  7  2023 README.md
+drwxr-xr-x 2 root root 4096 Jan  7  2023 img
+-rw-r--r-- 1 root root 1147 Jan  7  2023 index.html
+-rw-r--r-- 1 root root 2107 Jan  7  2023 main.js
+-rw-r--r-- 1 root root 1125 Jan  7  2023 style.css
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# sudo mv index.html /var/www/html/
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# sudo mv main.js /var/www/html/
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# sudo mv style.css /var/www/html/
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# ls -all
+total 16
+drwxr-xr-x 3 root root 4096 Oct  2 06:03 .
+drwxr-xr-x 3 root root 4096 Oct  2 06:03 ..
+-rw-r--r-- 1 root root   26 Jan  7  2023 README.md
+drwxr-xr-x 2 root root 4096 Jan  7  2023 img
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# sudo mv img /var/www/html/
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# ls -all
+total 12
+drwxr-xr-x 2 root root 4096 Oct  2 06:04 .
+drwxr-xr-x 4 root root 4096 Oct  2 06:04 ..
+-rw-r--r-- 1 root root   26 Jan  7  2023 README.md
+root@ip-172-31-21-212:/var/www/html/HEX-Color-Guessing-game-master# cd ..
+root@ip-172-31-21-212:/var/www/html# ls -all
+total 4532
+drwxr-xr-x 4 root root    4096 Oct  2 06:04 .
+drwxr-xr-x 3 root root    4096 Oct  2 05:51 ..
+drwxr-xr-x 2 root root    4096 Oct  2 06:04 HEX-Color-Guessing-game-master
+-rw-r--r-- 1 root root  190902 Oct  2 05:57 HEX-Color-Guessing-game.git
+drwxr-xr-x 2 root root    4096 Jan  7  2023 img
+-rw-r--r-- 1 root root    1147 Jan  7  2023 index.html
+-rw-r--r-- 1 root root     612 Oct  2 05:51 index.nginx-debian.html
+-rw-r--r-- 1 root root    2107 Jan  7  2023 main.js
+-rw-r--r-- 1 root root 2207465 Oct  2 05:58 master.zip
+-rw-r--r-- 1 root root 2207465 Oct  2 05:59 master.zip.1
+-rw-r--r-- 1 root root    1125 Jan  7  2023 style.css
+root@ip-172-31-21-212:/var/www/html# ^C
+root@ip-172-31-21-212:/var/www/html# 
